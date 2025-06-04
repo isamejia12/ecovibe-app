@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="800" height="600" viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg">
+    <!-- Background with gradient -->
+    <defs>
+        <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" style="stop-color:#f0fdf4;stop-opacity:1" />
+            <stop offset="100%" style="stop-color:#dcfce7;stop-opacity:1" />
+        </linearGradient>
+        <!-- Pattern for textile texture -->
+        <pattern id="textilePattern" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
+            <line x1="0" y1="10" x2="20" y2="10" stroke="#047857" stroke-width="0.5" opacity="0.1"/>
+            <line x1="10" y1="0" x2="10" y2="20" stroke="#047857" stroke-width="0.5" opacity="0.1"/>
+        </pattern>
+    </defs>
+    
+    <!-- Background -->
+    <rect width="800" height="600" fill="url(#bgGradient)" />
+    
+    <!-- Central design representing artisanal craftsmanship -->
+    <g transform="translate(400,250)">
+        <!-- Circular frame representing a traditional embroidery hoop -->
+        <circle cx="0" cy="0" r="150" fill="none" stroke="#059669" stroke-width="8"/>
+        
+        <!-- Textile pattern background -->
+        <circle cx="0" cy="0" r="145" fill="url(#textilePattern)"/>
+        
+        <!-- Artisanal patterns -->
+        <path d="M-100,-50 Q0,-100 100,-50 Q150,0 100,50 Q0,100 -100,50 Q-150,0 -100,-50" 
+              fill="none" stroke="#047857" stroke-width="3" opacity="0.8"/>
+        
+        <!-- Thread-like details -->
+        <path d="M-80,-40 Q0,-80 80,-40" fill="none" stroke="#059669" stroke-width="2"/>
+        <path d="M-80,40 Q0,80 80,40" fill="none" stroke="#059669" stroke-width="2"/>
+        
+        <!-- Decorative stitches -->
+        <g id="stitches">
+            <circle cx="-60" cy="-30" r="2" fill="#047857"/>
+            <circle cx="-30" cy="-45" r="2" fill="#047857"/>
+            <circle cx="0" cy="-50" r="2" fill="#047857"/>
+            <circle cx="30" cy="-45" r="2" fill="#047857"/>
+            <circle cx="60" cy="-30" r="2" fill="#047857"/>
+        </g>
+        <use href="#stitches" transform="rotate(180)"/>
+        
+        <!-- Brand name -->
+        <text x="0" y="200" 
+              font-family="'Segoe UI', Tahoma, Geneva, Verdana, sans-serif" 
+              font-size="48" 
+              font-weight="bold"
+              fill="#047857" 
+              text-anchor="middle">
+            LINAO
+        </text>
+    </g>
+</svg> 

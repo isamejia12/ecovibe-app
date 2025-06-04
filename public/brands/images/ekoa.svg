@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="800" height="600" viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg">
+    <!-- Background with gradient -->
+    <defs>
+        <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" style="stop-color:#f0fdf4;stop-opacity:1" />
+            <stop offset="100%" style="stop-color:#dcfce7;stop-opacity:1" />
+        </linearGradient>
+        <!-- Pattern for bamboo-like texture -->
+        <pattern id="bambooPattern" x="0" y="0" width="60" height="60" patternUnits="userSpaceOnUse">
+            <line x1="30" y1="0" x2="30" y2="60" stroke="#047857" stroke-width="1" opacity="0.2"/>
+            <circle cx="30" cy="15" r="2" fill="#047857" opacity="0.2"/>
+            <circle cx="30" cy="45" r="2" fill="#047857" opacity="0.2"/>
+        </pattern>
+    </defs>
+    
+    <!-- Background -->
+    <rect width="800" height="600" fill="url(#bgGradient)" />
+    <rect width="800" height="600" fill="url(#bambooPattern)" />
+    
+    <!-- Modern geometric design -->
+    <g transform="translate(400,250)">
+        <!-- Hexagon frame -->
+        <path d="M0,-120 L104,-60 L104,60 L0,120 L-104,60 L-104,-60 Z" 
+              fill="none" 
+              stroke="#059669" 
+              stroke-width="4"/>
+        
+        <!-- Inner hexagons -->
+        <path d="M0,-80 L69,-40 L69,40 L0,80 L-69,40 L-69,-40 Z" 
+              fill="none" 
+              stroke="#047857" 
+              stroke-width="3"/>
+        
+        <path d="M0,-40 L35,-20 L35,20 L0,40 L-35,20 L-35,-20 Z" 
+              fill="#10b981" 
+              opacity="0.9"/>
+    </g>
+    
+    <!-- Brand name -->
+    <text x="400" y="450" font-family="Arial" font-size="48" font-weight="bold" fill="#065f46" text-anchor="middle">
+        ÉKOA
+    </text>
+    <text x="400" y="480" font-family="Arial" font-size="20" fill="#047857" text-anchor="middle">
+        INNOVACIÓN SOSTENIBLE
+    </text>
+</svg> 
