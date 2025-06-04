@@ -1,0 +1,49 @@
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f9fafb;
+  }
+  
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+  
+  nav a:hover {
+    text-decoration: underline;
+  }
+  
+  .bg-green-700 {
+    background-color: #047857;
+  }
+  
+  .bg-green-600 {
+    background-color: #059669;
+  }
+  
+  .bg-green-500 {
+    background-color: #10b981;
+  }
+  
+  .bg-green-50 {
+    background-color: #f0fdf4;
+  }
+  
+  .text-green-800 {
+    color: #065f46;
+  }
+  
+  .text-green-700 {
+    color: #047857;
+  }
+  
+  .text-green-900 {
+    color: #064e3b;
+  }
+  
+  button {
+    cursor: pointer;
+  }
+  
