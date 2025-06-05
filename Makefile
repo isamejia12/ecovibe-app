@@ -24,14 +24,8 @@ help: ## Muestra la ayuda
 	@echo "make clean         - Limpia imágenes y contenedores antiguos"
 	@echo "make check-auth    - Verifica la autenticación con GHCR"
 	@echo ""
-	@echo "Antes de usar push o deploy, asegúrate de:"
-	@echo "1. Crear un Personal Access Token (PAT) en GitHub con los permisos:"
-	@echo "   - read:packages"
-	@echo "   - write:packages"
-	@echo "   - delete:packages"
-	@echo "   - repo"
-	@echo "2. Exportar el token: export CR_PAT=tu_token"
-	@echo "3. Iniciar sesión: echo \$$CR_PAT | docker login ghcr.io -u tu_usuario --password-stdin"
+	@echo "Repositorio actual: $(REPOSITORY)"
+	@echo "Versión actual: $(VERSION)"
 
 check-auth: ## Verifica la autenticación con GHCR
 	@echo "Verificando autenticación con $(DOCKER_REGISTRY)..."
@@ -60,15 +54,29 @@ build: ## Construye la imagen Docker
 	docker build -t $(REPOSITORY):$(VERSION) .
 	docker tag $(REPOSITORY):$(VERSION) $(REPOSITORY):latest
 
-push: check-auth ## Sube la imagen a GitHub Container Registry
+push: ## Sube la imagen a GitHub Container Registry
 	@echo "Subiendo $(REPOSITORY):$(VERSION) a GitHub Container Registry"
 	docker push $(REPOSITORY):$(VERSION)
 	docker push $(REPOSITORY):latest
 
-deploy: build push ## Construye y sube la imagen
+deploy: ## Construye y sube la imagen
+	@echo "=== Iniciando despliegue ==="
+	@echo "Repositorio: $(REPOSITORY)"
+	@echo "Versión: $(VERSION)"
+	@$(MAKE) build
+	@$(MAKE) push
+	@echo "=== Despliegue completado ==="
+
+fix-deploy: ## Construye y sube la imagen
+	@echo "=== Iniciando despliegue ==="
+	@echo "Repositorio: $(REPOSITORY)"
+	@$(MAKE) version-fix
+	@$(MAKE) build
+	@$(MAKE) push
+	@echo "=== Despliegue completado ==="
 
 clean: ## Limpia imágenes y contenedores antiguos
 	@echo "Limpiando imágenes y contenedores antiguos..."
 	docker container prune -f
 	docker image prune -f
-	docker images -q $(APP_NAME) | xargs -r docker rmi -f 
+	docker images -q $(REPOSITORY) | xargs -r docker rmi -f 
