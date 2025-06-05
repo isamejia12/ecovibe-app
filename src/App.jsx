@@ -208,12 +208,33 @@ const ProductGrid = ({ productos, currency, addToCart }) => (
   }}>
     {productos.map((producto) => (
       <div key={producto.id} className="card border-0 shadow-sm h-100">
-        <img 
-          src={producto.imagen} 
-          className="card-img-top" 
-          alt={producto.nombre}
-          style={{ height: '280px', objectFit: 'cover' }}
-        />
+        <div 
+          className="position-relative" 
+          style={{ display: 'none' }}
+          id={`image-container-${producto.id}`}
+        >
+          <img 
+            src={producto.imagen} 
+            className="card-img-top w-100"
+            alt={producto.nombre}
+            style={{ 
+              height: '280px',
+              objectFit: 'cover',
+              backgroundColor: '#f8f9fa'
+            }}
+            onLoad={(e) => {
+              e.target.parentElement.style.display = 'block';
+            }}
+            onError={(e) => {
+              e.target.parentElement.style.display = 'none';
+            }}
+          />
+          <div className="position-absolute top-0 end-0 m-2">
+            <span className="badge bg-success-subtle text-success">
+              {producto.marca}
+            </span>
+          </div>
+        </div>
         <div className="card-body p-3 d-flex flex-column">
           <h5 className="card-title mb-1">{producto.nombre}</h5>
           <p className="card-subtitle text-muted mb-2">{producto.marca}</p>
@@ -434,7 +455,7 @@ const blogPosts = [
     title: "Guía de Materiales Sostenibles",
     excerpt: "Descubre los materiales más innovadores y ecológicos en la industria de la moda actual.",
     category: "Materiales",
-    image: "/blog/images/sustainable-materials.jpg",
+    image: "https://images.unsplash.com/photo-1606041008023-472dfb5e530f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80",
     date: "2024-03-15",
     content: "Los materiales sostenibles están revolucionando la industria de la moda. Desde telas hechas de botellas recicladas hasta cuero de piña, las innovaciones son infinitas."
   },
@@ -443,7 +464,7 @@ const blogPosts = [
     title: "Cómo Cuidar tu Ropa Ecológica",
     excerpt: "Tips y consejos para mantener tus prendas sostenibles en perfecto estado por más tiempo.",
     category: "Cuidados",
-    image: "/blog/images/eco-clothing-care.jpg",
+    image: "https://images.unsplash.com/photo-1489987707025-afc232f7ea0f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80",
     date: "2024-03-10",
     content: "El cuidado adecuado de tu ropa sostenible no solo prolonga su vida útil, sino que también reduce su impacto ambiental."
   },
@@ -452,7 +473,7 @@ const blogPosts = [
     title: "El Impacto de la Moda Rápida",
     excerpt: "Análisis profundo sobre cómo la fast fashion afecta nuestro planeta y qué podemos hacer al respecto.",
     category: "Sostenibilidad",
-    image: "/blog/images/fast-fashion-impact.jpg",
+    image: "https://images.unsplash.com/photo-1512436991641-6745cdb1723f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80",
     date: "2024-03-05",
     content: "La moda rápida tiene consecuencias devastadoras para nuestro planeta. Es hora de hacer un cambio hacia prácticas más sostenibles."
   },
@@ -461,7 +482,7 @@ const blogPosts = [
     title: "Tendencias en Moda Sostenible 2024",
     excerpt: "Las últimas tendencias en moda eco-friendly que están revolucionando la industria.",
     category: "Tendencias",
-    image: "/blog/images/eco-trends.jpg",
+    image: "https://images.unsplash.com/photo-1542060748-10c28b62716f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80",
     date: "2024-03-01",
     content: "Descubre cómo la moda sostenible está definiendo las tendencias de este año, combinando estilo con responsabilidad ambiental."
   }
@@ -491,7 +512,7 @@ const Blog = () => (
       <div className="row g-0">
         <div className="col-md-6">
           <img 
-            src="/blog/images/main-featured.jpg" 
+            src="https://images.unsplash.com/photo-1523381210434-271e8be1f52b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" 
             alt="Featured post" 
             className="img-fluid h-100 object-fit-cover"
             style={{ minHeight: '400px' }}

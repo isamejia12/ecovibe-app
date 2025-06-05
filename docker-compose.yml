@@ -1,0 +1,31 @@
+version: '3.8'
+
+services:
+  ecovibe:
+    build: .
+    container_name: ecovibe-app
+    restart: unless-stopped
+    networks:
+      - traefik-public
+      - default
+    labels:
+      - "traefik.enable=true"
+      - "traefik.docker.network=traefik-public"
+      # HTTP Router
+      - "traefik.http.routers.ecovibe.rule=Host(`ecovibe.amejia.net`)"
+      - "traefik.http.routers.ecovibe.entrypoints=websecure"
+      - "traefik.http.routers.ecovibe.tls.certresolver=letsencrypt"
+      # HTTP Services
+      - "traefik.http.services.ecovibe.loadbalancer.server.port=80"
+      # Middleware para seguridad
+      - "traefik.http.routers.ecovibe.middlewares=secHeaders@file"
+      # Redirección HTTP a HTTPS
+      - "traefik.http.routers.ecovibe-http.rule=Host(`ecovibe.amejia.net`)"
+      - "traefik.http.routers.ecovibe-http.entrypoints=web"
+      - "traefik.http.routers.ecovibe-http.middlewares=https-redirect@file"
+
+networks:
+  traefik-public:
+    external: true
+  default:
+    name: ecovibe-network 
